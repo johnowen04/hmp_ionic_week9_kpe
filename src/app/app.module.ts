@@ -7,9 +7,10 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {TglhariiniComponent} from './tglhariini/tglhariini.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
-  declarations: [AppComponent, TglhariiniComponent],
+  declarations: [AppComponent, TglhariiniComponent, ProductComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
