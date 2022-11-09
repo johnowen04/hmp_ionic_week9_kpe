@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor() {}
+
+  username = "John"
+  judul = "Ionic-Angular Week 9"
 }
