@@ -1,8 +1,18 @@
 <ion-card>
   <ion-card-content>
-    <ion-img src="https://placeimg.com/200/200/tech">
+    <ion-img src="{{productImg}}">
     </ion-img>
-    <h4><b>Gadget Masa Kini</b></h4>
-    <p>Rp. 8.000.000</p>
+    <h4><b>{{productName}}</b></h4>
+    <p>Rp. {{productPrice}}</p>
+    <p>Discount: Rp {{discount()}}</p>
+    <p>Nett Price: Rp {{nettPrice}}</p>
+    <p>Voucher {{kodeVoucher}} akan dipakai</p>
   </ion-card-content>
 </ion-card>
+<ion-item>
+  <ion-label position="floating">Kode Voucher</ion-label>
+  <ion-input (input)="checkVoucher($event)" [(ngModel)]="kodeVoucher"></ion-input>
+</ion-item>
+<ion-button (click)="applyDiscount()" [color]="btnColor" [disabled]="btnDisable">
+  Apply Diskon
+</ion-button>
