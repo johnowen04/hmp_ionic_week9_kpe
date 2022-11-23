@@ -1,18 +1,20 @@
-<ion-card>
+<ion-card *ngFor="let product of products">
   <ion-card-content>
-    <ion-img src="{{productImg}}">
+    <ion-img src="../assets/img/{{product.url}}">
     </ion-img>
-    <h4><b>{{productName}}</b></h4>
-    <p>Rp. {{productPrice}}</p>
-    <p>Discount: Rp {{discount()}}</p>
-    <p>Nett Price: Rp {{nettPrice}}</p>
-    <p>Voucher {{kodeVoucher}} akan dipakai</p>
+    <h4><b>{{product.name}}</b></h4>
+    <p *ngIf="product.discount > 0">
+      <s>Rp.{{product.price}}</s>
+    </p>
+    <p *ngIf="product.discount > 0">Discount: Rp.{{discount(product)}}</p>
+    <p>Nett Price: Rp.{{calculateNettPrice(product)}}</p>
+    <p *ngIf="kodeVoucher">Voucher {{kodeVoucher}} akan dipakai</p>
   </ion-card-content>
 </ion-card>
 <ion-item>
   <ion-label position="floating">Kode Voucher</ion-label>
   <ion-input (input)="checkVoucher($event)" [(ngModel)]="kodeVoucher"></ion-input>
 </ion-item>
-<ion-button (click)="applyDiscount()" [color]="btnColor" [disabled]="btnDisable">
-  Apply Diskon
-</ion-button>
+<!-- <ion-button (click)="applyDiscount()" [color]="btnColor" [disabled]="btnDisable">
+    Apply Diskon
+  </ion-button> -->
