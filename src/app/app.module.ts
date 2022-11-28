@@ -12,15 +12,17 @@ import { CegahcovidComponent } from './cegahcovid/cegahcovid.component';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
+import { MovieComponent } from './movie/movie.component';
 
 const appRoutes: Routes = [
   {path: 'product', component: ProductComponent},
   {path: 'detail/:id', component: ProductdetailComponent},
   {path: 'covid', component: CegahcovidComponent},
+  {path: 'movie', component: MovieComponent},
 ];
 
 @NgModule({
-  declarations: [AppComponent, TglhariiniComponent, ProductComponent, CegahcovidComponent, ProductdetailComponent],
+  declarations: [AppComponent, MovieComponent, TglhariiniComponent, ProductComponent, CegahcovidComponent, ProductdetailComponent],
   imports: [RouterModule.forRoot(appRoutes), BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
   providers: [ProductService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

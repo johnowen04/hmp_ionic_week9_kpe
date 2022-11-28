@@ -1,0 +1,6 @@
+<ion-card *ngFor="let movie of movies; let i = index">
+  <ion-card-content>
+    <p class="judul" routerLink="/detailmovie/{{i}}">{{movie.judul}}</p>
+    <ion-img src={{movie.poster}}></ion-img>
+  </ion-card-content>
+</ion-card>
