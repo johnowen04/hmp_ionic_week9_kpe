@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProductService } from '../product.service';
 
 @Input()
 
@@ -9,11 +10,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(public ps: ProductService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.products = this.ps.productsPhone
+  }
 
-  @Input('prod') products;
+  // @Input('prod') products;
+  products = [];
 
   productName: string = "Gadget Baru"
   productPrice: number = 8000000

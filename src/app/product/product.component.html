@@ -1,4 +1,4 @@
-<ion-card *ngFor="let product of products">
+<ion-card *ngFor="let product of products; let i = index">
   <ion-card-content>
     <ion-img src="../assets/img/{{product.url}}">
     </ion-img>
@@ -8,6 +8,7 @@
     </p>
     <p *ngIf="product.discount > 0">Discount: Rp.{{discount(product)}}</p>
     <p>Nett Price: Rp.{{calculateNettPrice(product)}}</p>
+    <ion-button color="primary" routerLink="/detail/{{i}}">Read More</ion-button>
     <p *ngIf="kodeVoucher">Voucher {{kodeVoucher}} akan dipakai</p>
   </ion-card-content>
 </ion-card>

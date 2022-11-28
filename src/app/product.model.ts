@@ -3,7 +3,8 @@ export class ProductModel {
         public name: string,
         public price: number,
         public discount: number,
-        public url: string
+        public url: string,
+        public description: string
     ) {
         
     }
