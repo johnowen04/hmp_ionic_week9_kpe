@@ -1,12 +1,23 @@
-<ion-card>
+<ion-button size="small" (click)="fontSize = fontSize + 1">+</ion-button>
+<ion-button size="small" (click)="fontSize = fontSize - 1">-</ion-button>
+<ion-card *ngFor="let product of products; let i = index">
   <ion-card-content>
-    <ion-img src="{{productImg}}">
+    <ion-chip>{{i + 1}}</ion-chip>
+    <ion-img src="{{product.url}}">
     </ion-img>
-    <h4><b>{{productName}}</b></h4>
-    <p>Rp. {{productPrice}}</p>
-    <p>Discount: Rp {{discount()}}</p>
-    <p>Nett Price: Rp {{nettPrice}}</p>
-    <p>Voucher {{kodeVoucher}} akan dipakai</p>
+    <h4 [ngStyle]="{'fontSize': fontSize + 'pt'}"><b>{{productName}}</b></h4>
+    <p [ngStyle]="{'fontSize': fontSize + 'pt'}" *ngIf="product.disc > 0">
+      <s [ngStyle]="{'color': 'red', 'font-weight': 'bold'}">Rp. {{product.price}}</s>
+    </p>
+    <p *ngIf="productPrice != nettPrice">Discount: Rp. {{product.price * product.disc}}</p>
+    <p [ngStyle]="{'fontSize': fontSize + 'pt'}">Nett Price: Rp. {{product.price * (1 - product.disc)}}</p>
+    <p *ngIf="kodeVoucher">Voucher {{kodeVoucher}} akan dipakai</p>
+    <ion-button (click)="checkDisplay(product)">Show More</ion-button>
+    <p *ngIf="product.display">
+      <ion-card-content  *ngFor="let spec_detail of product.spec">
+        <li>{{spec_detail}}</li>
+      </ion-card-content>
+    </p>
   </ion-card-content>
 </ion-card>
 <ion-item>
