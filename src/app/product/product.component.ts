@@ -16,6 +16,14 @@ export class ProductComponent implements OnInit {
     this.products = this.ps.productsPhone
   }
 
+  json: string = '... Menunggu dari observable'
+
+  listProduct() {
+    this.ps.productList().subscribe(
+      (data) => { this.json = data; }
+    );
+  }
+
   // @Input('prod') products;
   products = [];
 
