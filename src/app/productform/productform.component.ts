@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-productform',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductformComponent implements OnInit {
 
-  constructor() { }
+  constructor(public ps: ProductService) { }
 
   ngOnInit() { }
 
@@ -15,6 +16,20 @@ export class ProductformComponent implements OnInit {
   productPrice: number = 0;
   productUrl: string = '';
   productDisc: number = 0;
+  productDesc: string = "";
 
 
+  addProduct() {
+    this.ps.newProduct(
+      this.productName,
+      this.productPrice,
+      this.productDisc,
+      this.productUrl,
+      this.productDesc
+    ).subscribe(
+      (data) => {
+        alert(data['pesan']);
+      });
+    ;
+  }
 }
