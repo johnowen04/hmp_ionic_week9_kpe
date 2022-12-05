@@ -13,14 +13,14 @@ export class ProductComponent implements OnInit {
   constructor(public ps: ProductService) { }
 
   ngOnInit() {
-    this.products = this.ps.productsPhone
+    this.listProduct();
   }
 
   json: string = '... Menunggu dari observable'
 
   listProduct() {
     this.ps.productList().subscribe(
-      (data) => { this.json = data; }
+      (data) => { this.products = data; }
     );
   }
 
@@ -42,7 +42,7 @@ export class ProductComponent implements OnInit {
   // ];
 
   discount(product): number {
-    return product.price * product.discount
+    return product.price * product.disc
   }
 
   calculateNettPrice(product): number {

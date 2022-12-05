@@ -7,12 +7,12 @@
     <ion-img src="../assets/img/{{product.url}}">
     </ion-img>
     <h4><b>{{product.name}}</b></h4>
-    <p *ngIf="product.discount > 0">
+    <p *ngIf="product.disc > 0">
       <s>Rp.{{product.price}}</s>
     </p>
-    <p *ngIf="product.discount > 0">Discount: Rp.{{discount(product)}}</p>
+    <p *ngIf="product.disc > 0">Discount: Rp.{{discount(product)}}</p>
     <p>Nett Price: Rp.{{calculateNettPrice(product)}}</p>
-    <ion-button color="primary" routerLink="/detail/{{i}}">Read More</ion-button>
+    <ion-button color="primary" routerLink="/detail/{{product.id}}">Read More</ion-button>
     <p *ngIf="kodeVoucher">Voucher {{kodeVoucher}} akan dipakai</p>
   </ion-card-content>
 </ion-card>

@@ -14,13 +14,15 @@ export class ProductdetailComponent implements OnInit {
 
   ngOnInit() {
     var id: number = this.route.snapshot.params['id'];
-    var detail: ProductModel = this.ps.productsPhone[id];
-    
-    this.name = detail.name;
-    this.price = detail.price;
-    this.discount = detail.discount;
-    this.url = detail.url;
-    this.description = detail.description;
+    this.ps.getProduct(id).subscribe(
+      (data) => {
+        this.name = data[0]['name'];
+        this.price = data[0]['price'];
+        this.discount = data[0]['disc'];
+        this.url = data[0]['url']
+        this.description = data[0]['desc']
+      }
+    );
   }
 
   name: string = "";
