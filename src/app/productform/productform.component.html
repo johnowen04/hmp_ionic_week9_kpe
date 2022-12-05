@@ -1,0 +1,24 @@
+<ion-item>
+  <ion-label position='floating'>Product name</ion-label>
+  <ion-input [(ngModel)]="productName"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='floating'>Product desc</ion-label>
+  <ion-input [(ngModel)]="productDesc"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='floating'>Product price</ion-label>
+  <ion-input type='number' [(ngModel)]="productPrice"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position='floating'>Product URL</ion-label>
+  <ion-input [(ngModel)]="productUrl"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-range min="0" max="90" [(ngModel)]="productDisc">
+    <ion-label slot="start">Discount 0%</ion-label>
+    <ion-label slot="end">90%</ion-label>
+  </ion-range>
+</ion-item>
+<ion-button expand='block' (click)="addProduct()">Simpan
+</ion-button>

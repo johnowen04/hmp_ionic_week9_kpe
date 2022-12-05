@@ -2,15 +2,31 @@ import { Injectable } from '@angular/core';
 import { ProductModel } from './product.model';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
+  constructor(private http: HttpClient) { }
+
   productList(): Observable<any> {
-    return of("ini nanti json products");
+    return this.http.get("http://localhost/hybrid/products.php")
   }
+
+  newProduct(name: string, price: number, disc: number, url: string, desc: string): Observable<any> {
+    let body = new HttpParams();
+    body = body.set('name', name);
+    body = body.set('price', price.toString());
+    body = body.set('disc', disc.toString());
+    body = body.set('url', url);
+    body = body.set('desc', desc);
+    return this.http.post("http://localhost/hybrid/addproduct.php", body);
+  }
+
 
   productsPhone: ProductModel[] = [
     new ProductModel('Realme 5',
@@ -44,6 +60,4 @@ export class ProductService {
       'Iphone X'
     )
   ];
-
-  constructor() { }
 }
