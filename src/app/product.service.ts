@@ -14,13 +14,13 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   productList(): Observable<any> {
-    return this.http.get("http://localhost/webservices/hmp/listproducts.php")
+    return this.http.get("https://ubaya.fun/hybrid/160420016/webservices/listproducts.php")
   }
 
   getProduct(id: number) {
     let body = new HttpParams();
     body = body.set('id', id.toString());
-    return this.http.post("http://localhost/webservices/hmp/getproduct.php", body);
+    return this.http.post("https://ubaya.fun/hybrid/160420016/webservices/getproduct.php", body);
   }
 
   newProduct(name: string, price: number, disc: number, url: string, desc: string): Observable<any> {
@@ -30,7 +30,7 @@ export class ProductService {
     body = body.set('disc', disc.toString());
     body = body.set('url', url);
     body = body.set('desc', desc);
-    return this.http.post("http://localhost/webservices/hmp/addproduct.php", body);
+    return this.http.post("https://ubaya.fun/hybrid/160420016/webservices/addproduct.php", body);
   }
 
 

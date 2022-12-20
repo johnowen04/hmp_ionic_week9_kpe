@@ -4,7 +4,7 @@
 <ion-card *ngFor="let product of products; let i = index">
   <ion-card-content>
     <ion-chip>{{i+1}}</ion-chip>
-    <ion-img src="../assets/img/{{product.url}}">
+    <ion-img src="https://ubaya.fun/hybrid/160420016/images/{{product.url}}">
     </ion-img>
     <h4><b>{{product.name}}</b></h4>
     <p *ngIf="product.disc > 0">
