@@ -5,6 +5,8 @@ import { RouteReuseStrategy, Routes, RouterModule } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 
+import { Camera } from '@ionic-native/camera/ngx';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TglhariiniComponent } from './tglhariini/tglhariini.component';
@@ -28,7 +30,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [AppComponent, ProductformComponent, MovieComponent, DetailmovieComponent, TglhariiniComponent, ProductComponent, CegahcovidComponent, ProductdetailComponent],
   imports: [HttpClientModule, RouterModule.forRoot(appRoutes), BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
-  providers: [ProductService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [Camera, ProductService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

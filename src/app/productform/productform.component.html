@@ -11,8 +11,10 @@
   <ion-input type='number' [(ngModel)]="productPrice"></ion-input>
 </ion-item>
 <ion-item>
-  <ion-label position='floating'>Product URL</ion-label>
-  <ion-input [(ngModel)]="productUrl"></ion-input>
+  <ion-img src="{{ productUrl}}">
+  </ion-img>
+  <ion-button (click)="ambilFoto()">
+    foto</ion-button>
 </ion-item>
 <ion-item>
   <ion-range min="0" max="90" [(ngModel)]="productDisc">

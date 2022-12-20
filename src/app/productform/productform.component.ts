@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-productform',
@@ -8,7 +9,7 @@ import { ProductService } from '../product.service';
 })
 export class ProductformComponent implements OnInit {
 
-  constructor(public ps: ProductService) { }
+  constructor(public ps: ProductService, public camera: Camera) { }
 
   ngOnInit() { }
 
@@ -18,6 +19,27 @@ export class ProductformComponent implements OnInit {
   productDisc: number = 0;
   productDesc: string = "";
 
+  options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE,
+    sourceType: this.camera.PictureSourceType.CAMERA,
+    saveToPhotoAlbum: true
+  }
+
+
+  ambilFoto() {
+    this.camera.getPicture(this.options).then(
+      (imageData) => {
+        let base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.productUrl = base64Image;
+      },
+      (err) => {
+        //if error
+      }
+    );
+  }
 
   addProduct() {
     this.ps.newProduct(
