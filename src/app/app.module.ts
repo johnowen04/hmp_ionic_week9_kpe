@@ -6,6 +6,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Camera } from '@ionic-native/camera/ngx';
+import { IonicStorageModule } from '@ionic/storage-angular';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +20,7 @@ import { ProductdetailComponent } from './productdetail/productdetail.component'
 import { MovieComponent } from './movie/movie.component';
 import { DetailmovieComponent } from './detailmovie/detailmovie.component';
 import { ProductformComponent } from './productform/productform.component';
+import { UserService } from './user.service';
 
 const appRoutes: Routes = [
   { path: 'product', component: ProductComponent },
@@ -29,8 +32,8 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, ProductformComponent, MovieComponent, DetailmovieComponent, TglhariiniComponent, ProductComponent, CegahcovidComponent, ProductdetailComponent],
-  imports: [HttpClientModule, RouterModule.forRoot(appRoutes), BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
-  providers: [Camera, ProductService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  imports: [IonicStorageModule.forRoot(), HttpClientModule, RouterModule.forRoot(appRoutes), BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
+  providers: [Camera, Geolocation, UserService, ProductService, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
